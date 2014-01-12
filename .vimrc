@@ -40,3 +40,4 @@ map <C-n> :NERDTreeToggle<CR>
 let mapleader=","
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 set showmatch
+set ai
