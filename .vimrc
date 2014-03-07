@@ -21,15 +21,6 @@ set guifont=Sauce\ Code\ Powerline:h10:cANSI
 " pathogen starten?!
 execute pathogen#infect()
 call pathogen#incubate()
-" cursor tasten deaktivieren
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
 au BufWritePost .vimrc so ~/.vimrc
 set go-=m
 set go-=T
