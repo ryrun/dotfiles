@@ -39,5 +39,10 @@ set go-=e
 map <C-n> :NERDTreeToggle<CR>
 let mapleader=","
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
-set showmatch
+"set showmatch
 set ai
+filetype plugin indent on
+set autoindent
+set smartindent
+set cindent
+set autochdir
