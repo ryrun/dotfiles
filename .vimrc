@@ -37,3 +37,4 @@ set autoindent
 set smartindent
 set cindent
 set autochdir
+set clipboard+=unnamed
