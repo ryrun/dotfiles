@@ -38,3 +38,5 @@ set smartindent
 set cindent
 set autochdir
 set clipboard+=unnamed
+inoremap jj <ESC>
+imap <C-BS> <C-W>
