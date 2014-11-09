@@ -1,10 +1,9 @@
 language messages en
-
-"vundle
+" vundle
 filetype off
 set rtp+=~/vimfiles/bundle/Vundle.vim
 call vundle#begin()
-"plugins
+" Plugins
 Plugin 'gmarik/Vundle.vim'
 Plugin 'wavded/vim-stylus'
 Plugin 'AndrewRadev/vim-eco'
@@ -51,3 +50,7 @@ set cindent
 set autochdir
 set clipboard+=unnamed
 au BufNewFile,BufRead *.md set filetype=markdown
+imap <C-BS> <C-W>
+"spell
+setlocal spell spelllang=de_de
+set spell
