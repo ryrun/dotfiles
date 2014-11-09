@@ -1,5 +1,5 @@
 language messages en
-" vundle
+" Vundle
 filetype off
 set rtp+=~/vimfiles/bundle/Vundle.vim
 call vundle#begin()
@@ -11,12 +11,12 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neocomplcache.vim'
-"plugins end
+" Plugins Ende
 call vundle#end()
 filetype plugin indent on
-"vundle ende
+" Vundle Ende
 
-"config
+" Konfiguration
 set hidden
 set encoding=utf-8
 let g:airline_powerline_fonts = 1
@@ -51,6 +51,6 @@ set autochdir
 set clipboard+=unnamed
 au BufNewFile,BufRead *.md set filetype=markdown
 imap <C-BS> <C-W>
-"spell
+" Spellchecker
 setlocal spell spelllang=de_de
-set spell
+nnoremap <silent> <leader>s :set spell!<cr>
