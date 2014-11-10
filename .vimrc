@@ -52,5 +52,7 @@ set clipboard+=unnamed
 au BufNewFile,BufRead *.md set filetype=markdown
 imap <C-BS> <C-W>
 " Spellchecker
-setlocal spell spelllang=de_de
+setlocal spelllang=de_de
 nnoremap <silent> <leader>s :set spell!<cr>
+" No Beeping?
+autocmd GUIEnter * set vb t_vb=
