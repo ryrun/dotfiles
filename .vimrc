@@ -56,3 +56,5 @@ setlocal spelllang=de_de
 nnoremap <silent> <leader>s :set spell!<cr>
 " No Beeping?
 autocmd GUIEnter * set vb t_vb=
+" Neocomplete
+let g:neocomplcache_enable_at_startup = 1
