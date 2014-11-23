@@ -1,22 +1,27 @@
 language messages en
 " Vundle
 filetype off
-set rtp+=~/vimfiles/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Plugins
 Plugin 'gmarik/Vundle.vim'
+Plugin 'Logcat-syntax-highlighter'
+Plugin 'tomasr/molokai'
 Plugin 'wavded/vim-stylus'
 Plugin 'AndrewRadev/vim-eco'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimshell.vim'
 " Plugins Ende
 call vundle#end()
 filetype plugin indent on
 " Vundle Ende
 
 " Konfiguration
+let mapleader=","
 set hidden
 set encoding=utf-8
 let g:airline_powerline_fonts = 1
@@ -41,16 +46,17 @@ set go-=T
 set go-=r
 set go-=L
 set go-=e
-map <C-n> :NERDTreeToggle<CR>
-let mapleader=","
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
 set autoindent
 set smartindent
 set cindent
-set autochdir
 set clipboard+=unnamed
 au BufNewFile,BufRead *.md set filetype=markdown
+" keymaps
 imap <C-BS> <C-W>
+imap <S-Tab> <Esc><<i
+map <leader>n :NERDTreeToggle<CR>
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <leader>i gg=G''
 " Spellchecker
 setlocal spelllang=de_de
 nnoremap <silent> <leader>s :set spell!<cr>
