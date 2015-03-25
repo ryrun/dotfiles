@@ -6,6 +6,30 @@
 (add-to-list 'default-frame-alist '(alpha 95 50))
 (setq ring-bell-function 'ignore)
 (tool-bar-mode -1)
+(setq make-backup-files nil)
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(global-linum-mode t)
+(add-hook 'after-init-hook 'global-company-mode)
+
+(defun increment-number-at-point ()
+      (interactive)
+      (skip-chars-backward "-0123456789")
+      (or (looking-at "[-0123456789]+")
+          (error "No number at point"))
+      (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
+
+(defun decrement-number-at-point ()
+      (interactive)
+      (skip-chars-backward "-0123456789")
+      (or (looking-at "[-0123456789]+")
+          (error "No number at point"))
+      (replace-match (number-to-string (1- (string-to-number (match-string 0))))))
+
+(global-set-key (kbd "C-c +") 'increment-number-at-point)
+(global-set-key (kbd "C-c -") 'decrement-number-at-point)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
