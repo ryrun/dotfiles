@@ -65,3 +65,7 @@
  '(default ((t (:family "Source Code Pro" :foundry "outline" :slant normal :weight normal :height 98 :width normal)))))
 
 (set-default-font "Source Code Pro-11")
+(setq plantuml-jar-path "~/../../Documents/plantuml.jar")
+(blink-cursor-mode 0)
+(set-cursor-color "#0088ff") 
+(setq initial-scratch-message "")
