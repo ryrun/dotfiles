@@ -64,8 +64,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "outline" :slant normal :weight normal :height 98 :width normal)))))
 
-(set-default-font "Source Code Pro-11")
 (setq plantuml-jar-path "~/../../Documents/plantuml.jar")
-(blink-cursor-mode 0)
-(set-cursor-color "#0088ff") 
+(blink-cursor-mode 1)
+(set-cursor-color "#ffffff") 
+(setq-default cursor-type 'bar)
 (setq initial-scratch-message "")
