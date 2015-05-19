@@ -1,7 +1,27 @@
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
+
+(require 'cl)
+(defvar my-packages
+  '(sws-mode async darcula-theme helm company lua-mode stylus-mode)
+  "Used packages.")
+ 
+(defun my-packages-installed-p ()
+  (loop for p in my-packages
+        when (not (package-installed-p p)) do (return nil)
+        finally (return t)))
+ 
+(unless (my-packages-installed-p)
+  (package-refresh-contents)
+  (dolist (p my-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
+
+;;config start
 (require 'darcula-theme)
+(require 'helm-config)
+(helm-mode 1)
 
 (set-frame-parameter (selected-frame) 'alpha '(95 50))
 (add-to-list 'default-frame-alist '(alpha 95 50))
