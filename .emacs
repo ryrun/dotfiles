@@ -57,3 +57,4 @@
 (set-cursor-color "#ffffff") 
 (setq-default cursor-type 'bar)
 (setq initial-scratch-message "")
+(setq inhibit-startup-message t)
