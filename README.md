@@ -1,4 +1,4 @@
-Just my vimrc file
+Just my vimrc and .emacs file
 ==================
 
 Nothing special ...
