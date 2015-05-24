@@ -27,6 +27,7 @@
 (add-to-list 'default-frame-alist '(alpha 95 50))
 (setq ring-bell-function 'ignore)
 (tool-bar-mode -1)
+(menu-bar-mode -99)
 (setq make-backup-files nil)
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
