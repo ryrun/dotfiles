@@ -60,7 +60,6 @@
 (setq-default cursor-type 'bar)
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
-(put 'upcase-region 'disabled nil)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
