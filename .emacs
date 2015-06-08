@@ -5,7 +5,7 @@
 
 (require 'cl)
 (defvar my-packages
-  '(sws-mode async darcula-theme helm company lua-mode stylus-mode)
+  '(sws-mode async helm company lua-mode stylus-mode)
   "Used packages.")
  
 (defun my-packages-installed-p ()
@@ -20,7 +20,7 @@
       (package-install p))))
 
 ;;config start
-(require 'darcula-theme)
+(load-theme 'manoj-dark t)
 (require 'helm-config)
 (helm-mode 1)
 
@@ -60,6 +60,10 @@
 (setq-default cursor-type 'bar)
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -72,3 +76,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(global-set-key (kbd "M-x") #'helm-M-x)
