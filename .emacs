@@ -5,7 +5,7 @@
 
 (require 'cl)
 (defvar my-packages
-  '(sws-mode async helm company lua-mode stylus-mode)
+  '(sws-mode async helm company lua-mode stylus-mode kixtart-mode)
   "Used packages.")
  
 (defun my-packages-installed-p ()
