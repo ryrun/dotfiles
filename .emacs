@@ -98,3 +98,5 @@
 (set-default 'truncate-lines t)
 ;suppressing ad-handle-definition Warnings
 (setq ad-redefinition-action 'accept)
+
+;(setenv "PATH" (concat "C:\\" path-separator (getenv "PATH")))
