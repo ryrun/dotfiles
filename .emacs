@@ -1,6 +1,6 @@
-(require 'package) ;; You might already have this line
+(require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (require 'cl)
@@ -19,10 +19,10 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-;;config start
+;config start
 (load-theme 'manoj-dark t)
 (require 'helm-config)
-(helm-mode 1)
+;(helm-mode 1)
 
 (set-frame-parameter (selected-frame) 'alpha '(95 50))
 (add-to-list 'default-frame-alist '(alpha 95 50))
@@ -77,10 +77,14 @@
  ;; If there is more than one, they won't work right.
  )
 
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x b") 'helm-mini)
+(ido-mode 1)
+(setq ido-everywhere t)
+(setq ido-enable-flex-matching t)
+
+;(global-set-key (kbd "M-x") 'helm-M-x)
+;(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+;(global-set-key (kbd "C-x C-f") 'helm-find-files)
+;(global-set-key (kbd "C-x b") 'helm-mini)
 
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -88,7 +92,9 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-;;kein visual line movement
+;kein visual line movement
 (setq line-move-visual nil)
-;;kein wrapping
+;kein wrapping
 (set-default 'truncate-lines t)
+;suppressing ad-handle-definition Warnings
+(setq ad-redefinition-action 'accept)
