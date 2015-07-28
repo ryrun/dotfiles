@@ -99,4 +99,8 @@
 ;suppressing ad-handle-definition Warnings
 (setq ad-redefinition-action 'accept)
 
+(global-prettify-symbols-mode 1)
+
 ;(setenv "PATH" (concat "C:\\" path-separator (getenv "PATH")))
+
+(server-start)
