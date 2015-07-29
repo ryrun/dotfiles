@@ -101,7 +101,7 @@
 
 (add-hook 'js-mode-hook
             (lambda ()
-              (push '("function" . ?ƒ) prettify-symbols-alist)))
+              (push '("function" . 402) prettify-symbols-alist)))
 (global-prettify-symbols-mode 1)
 
 ;(setenv "PATH" (concat "C:\\" path-separator (getenv "PATH")))
