@@ -28,8 +28,8 @@
 (require 'helm-config)
 ;;(helm-mode 1)
 
-(set-frame-parameter (selected-frame) 'alpha '(95 50))
-(add-to-list 'default-frame-alist '(alpha 95 50))
+(set-frame-parameter (selected-frame) 'alpha '(95 95))
+(add-to-list 'default-frame-alist '(alpha 95 95))
 (setq ring-bell-function 'ignore)
 (tool-bar-mode -1)
 (menu-bar-mode -99)
