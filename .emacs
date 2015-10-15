@@ -1,12 +1,16 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (require 'cl)
 (defvar my-packages
-  '(sws-mode async helm company lua-mode stylus-mode kixtart-mode multiple-cursors)
+  '(sws-mode async helm company lua-mode stylus-mode kixtart-mode multiple-cursors paredit fsharp-mode)
   "Used packages.")
+
+(if (file-exists-p "~/sim.el")
+  (load "~/sim.el")
+  (require 'stupid-indent-mode))
  
 (defun my-packages-installed-p ()
   (loop for p in my-packages
@@ -19,10 +23,10 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-;config start
+;;config start
 (load-theme 'manoj-dark t)
 (require 'helm-config)
-;(helm-mode 1)
+;;(helm-mode 1)
 
 (set-frame-parameter (selected-frame) 'alpha '(95 50))
 (add-to-list 'default-frame-alist '(alpha 95 50))
@@ -35,26 +39,10 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (global-linum-mode t)
-(add-hook 'after-init-hook 'global-company-mode)
+;;(add-hook 'after-init-hook 'global-company-mode)
 
-(defun increment-number-at-point ()
-      (interactive)
-      (skip-chars-backward "-0123456789")
-      (or (looking-at "[-0123456789]+")
-          (error "No number at point"))
-      (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
-
-(defun decrement-number-at-point ()
-      (interactive)
-      (skip-chars-backward "-0123456789")
-      (or (looking-at "[-0123456789]+")
-          (error "No number at point"))
-      (replace-match (number-to-string (1- (string-to-number (match-string 0))))))
-
-(global-set-key (kbd "C-c +") 'increment-number-at-point)
-(global-set-key (kbd "C-c -") 'decrement-number-at-point)
 (set-default-font "Source Code Pro-11")
-(setq plantuml-jar-path "~/../../Documents/plantuml.jar")
+
 (blink-cursor-mode 1)
 (set-cursor-color "#ffffff") 
 (setq-default cursor-type 'bar)
@@ -81,10 +69,10 @@
 (setq ido-everywhere t)
 (setq ido-enable-flex-matching t)
 
-;(global-set-key (kbd "M-x") 'helm-M-x)
-;(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-;(global-set-key (kbd "C-x C-f") 'helm-find-files)
-;(global-set-key (kbd "C-x b") 'helm-mini)
+;;(global-set-key (kbd "M-x") 'helm-M-x)
+;;(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+;;(global-set-key (kbd "C-x C-f") 'helm-find-files)
+;;(global-set-key (kbd "C-x b") 'helm-mini)
 
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -92,11 +80,12 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-;kein visual line movement
+;;emacs speed up on big files?
 (setq line-move-visual nil)
-;kein wrapping
+(setq-default bidi-display-reordering nil)
 (set-default 'truncate-lines t)
-;suppressing ad-handle-definition Warnings
+
+;;suppressing ad-handle-definition Warnings
 (setq ad-redefinition-action 'accept)
 
 (add-hook 'js-mode-hook
@@ -104,6 +93,14 @@
               (push '("function" . 402) prettify-symbols-alist)))
 (global-prettify-symbols-mode 1)
 
-;(setenv "PATH" (concat "C:\\" path-separator (getenv "PATH")))
+;;fsharp
+(add-hook 'fsharp-mode-hook
+          (lambda ()
+            (stupid-indent-mode)
+            (setq adaptive-fill-mode nil)
+            ))
+
+;;disable C-x C-c
+(global-unset-key (kbd "C-x C-c"))
 
 (server-start)
