@@ -9,9 +9,10 @@
   "Used packages.")
 
 (if (file-exists-p "~/sim.el")
-  (load "~/sim.el")
-  (require 'stupid-indent-mode))
- 
+  (progn
+    (load "~/sim.el")
+    (require 'stupid-indent-mode)))
+
 (defun my-packages-installed-p ()
   (loop for p in my-packages
         when (not (package-installed-p p)) do (return nil)
