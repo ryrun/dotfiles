@@ -29,8 +29,8 @@
 (require 'helm-config)
 ;;(helm-mode 1)
 
-(set-frame-parameter (selected-frame) 'alpha '(95 95))
-(add-to-list 'default-frame-alist '(alpha 95 95))
+(set-frame-parameter (selected-frame) 'alpha '(98 98))
+(add-to-list 'default-frame-alist '(alpha 98 98))
 (setq ring-bell-function 'ignore)
 (tool-bar-mode -1)
 (menu-bar-mode -99)
@@ -39,7 +39,6 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
-(global-linum-mode t)
 ;;(add-hook 'after-init-hook 'global-company-mode)
 
 (set-default-font "Source Code Pro-11")
@@ -58,7 +57,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(delete-selection-mode t))
+ '(delete-selection-mode t)
+ '(package-selected-packages
+   (quote
+    (stylus-mode spinner queue pkg-info paredit multiple-cursors lua-mode kixtart-mode helm fsharp-mode company clojure-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -82,9 +84,9 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;;emacs speed up on big files?
-(setq line-move-visual nil)
+;;(setq line-move-visual nil)
 (setq-default bidi-display-reordering nil)
-(set-default 'truncate-lines t)
+;;(set-default 'truncate-lines t)
 
 ;;suppressing ad-handle-definition Warnings
 (setq ad-redefinition-action 'accept)
