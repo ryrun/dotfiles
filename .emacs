@@ -5,7 +5,7 @@
 
 (require 'cl)
 (defvar my-packages
-  '(sws-mode async helm company lua-mode stylus-mode kixtart-mode multiple-cursors paredit fsharp-mode)
+  '(sws-mode async helm company lua-mode stylus-mode kixtart-mode multiple-cursors paredit fsharp-mode php-mode)
   "Used packages.")
 
 (if (file-exists-p "~/sim.el")
