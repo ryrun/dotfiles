@@ -5,7 +5,7 @@
 
 (require 'cl)
 (defvar my-packages
-  '(sws-mode async helm company lua-mode stylus-mode kixtart-mode multiple-cursors paredit fsharp-mode php-mode)
+  '(sws-mode async helm company lua-mode stylus-mode kixtart-mode multiple-cursors paredit fsharp-mode)
   "Used packages.")
 
 (if (file-exists-p "~/sim.el")
@@ -60,7 +60,7 @@
  '(delete-selection-mode t)
  '(package-selected-packages
    (quote
-    (stylus-mode spinner queue pkg-info paredit multiple-cursors lua-mode kixtart-mode helm fsharp-mode company clojure-mode))))
+    (fsharp-mode stylus-mode spinner queue pkg-info paredit multiple-cursors lua-mode kixtart-mode helm company clojure-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -97,11 +97,11 @@
 (global-prettify-symbols-mode 1)
 
 ;;fsharp
-(add-hook 'fsharp-mode-hook
-          (lambda ()
-            (stupid-indent-mode)
-            (setq adaptive-fill-mode nil)
-            ))
+;;(add-hook 'fsharp-mode-hook
+;;          (lambda ()
+;;            (stupid-indent-mode)
+;;            (setq adaptive-fill-mode nil)
+;;            ))
 
 ;;disable C-x C-c
 (global-unset-key (kbd "C-x C-c"))
