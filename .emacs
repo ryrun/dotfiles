@@ -5,7 +5,7 @@
 
 (require 'cl)
 (defvar my-packages
-  '(sws-mode async helm company lua-mode stylus-mode kixtart-mode multiple-cursors paredit fsharp-mode)
+  '(sws-mode async helm company lua-mode stylus-mode kixtart-mode multiple-cursors paredit fsharp-mode magit evil)
   "Used packages.")
 
 (if (file-exists-p "~/sim.el")
@@ -57,10 +57,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("e87a2bd5abc8448f8676365692e908b709b93f2d3869c42a4371223aab7d9cf8" default)))
  '(delete-selection-mode t)
  '(package-selected-packages
    (quote
-    (fsharp-mode stylus-mode spinner queue pkg-info paredit multiple-cursors lua-mode kixtart-mode helm company clojure-mode))))
+    (evil magit fsharp-mode stylus-mode spinner queue pkg-info paredit multiple-cursors lua-mode kixtart-mode helm company clojure-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -94,6 +97,9 @@
 (add-hook 'js-mode-hook
             (lambda ()
               (push '("function" . 402) prettify-symbols-alist)))
+(add-hook 'fsharp-mode-hook
+          (lambda()
+            (push '("|>" . 8614) prettify-symbols-alist)))
 (global-prettify-symbols-mode 1)
 
 ;;fsharp
@@ -105,5 +111,9 @@
 
 ;;disable C-x C-c
 (global-unset-key (kbd "C-x C-c"))
+
+;;evil vim
+(require 'evil)
+(evil-mode 1)
 
 (server-start)
