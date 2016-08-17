@@ -1,33 +1,76 @@
 (require 'package)
+(setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
-(require 'cl)
-(defvar my-packages
-  '(sws-mode async helm company lua-mode stylus-mode kixtart-mode paredit fsharp-mode magit)
-  "Used packages.")
-
-(if (file-exists-p "~/sim.el")
-  (progn
-    (load "~/sim.el")
-    (require 'stupid-indent-mode)))
-
-(defun my-packages-installed-p ()
-  (loop for p in my-packages
-        when (not (package-installed-p p)) do (return nil)
-        finally (return t)))
- 
-(unless (my-packages-installed-p)
+(unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (dolist (p my-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
+  (package-install 'use-package))
 
-;;config start
-(load-theme 'manoj-dark t)
-(require 'helm-config)
-;;(helm-mode 1)
+(use-package try
+  :ensure t)
+
+(use-package which-key
+  :ensure t 
+  :config	(which-key-mode))
+
+(use-package helm
+  :ensure t 
+  :init (progn
+          (require 'helm-config)))
+
+(use-package company
+  :ensure t)
+
+(use-package lua-mode
+  :ensure t)
+
+(use-package stylus-mode
+  :ensure t)
+
+(use-package kixtart-mode
+  :ensure t)
+
+(use-package paredit
+  :ensure t)
+
+(use-package ido
+  :ensure t
+  :init (progn
+          (ido-mode 1)
+          (setq ido-everywhere t))
+  :config (progn
+            (setq ido-enable-flex-matching t)))
+
+(use-package fsharp-mode
+  :ensure t
+  :init (progn
+          (add-hook 'fsharp-mode-hook
+                    (lambda()
+                      (push '("|>" . 8614) prettify-symbols-alist)))
+          (global-prettify-symbols-mode 1)))
+
+(use-package web-mode
+  :ensure t
+  :init (progn
+          (add-hook 'js-mode-hook
+                    (lambda ()
+                      (push '("function" . 402) prettify-symbols-alist)))
+          (global-prettify-symbols-mode 1)))
+
+(use-package magit
+  :ensure t
+  :bind (
+         ("C-x g" . magit-status)
+         ))
+
+(use-package edit-server
+  :if window-system
+  :init
+  (add-hook 'after-init-hook 'server-start t))
+
+(use-package theme-changer
+  :init (load-theme 'manoj-dark t))
 
 (set-frame-parameter (selected-frame) 'alpha '(98 98))
 (add-to-list 'default-frame-alist '(alpha 98 98))
@@ -39,7 +82,6 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
-;;(add-hook 'after-init-hook 'global-company-mode)
 
 (set-default-font "Source Code Pro-11")
 
@@ -52,58 +94,10 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("e87a2bd5abc8448f8676365692e908b709b93f2d3869c42a4371223aab7d9cf8" default)))
- '(delete-selection-mode t)
- '(package-selected-packages
-   (quote
-    (magit fsharp-mode stylus-mode spinner queue pkg-info paredit lua-mode kixtart-mode helm company clojure-mode))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-(ido-mode 1)
-(setq ido-everywhere t)
-(setq ido-enable-flex-matching t)
-
-;;(global-set-key (kbd "M-x") 'helm-M-x)
-;;(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-;;(global-set-key (kbd "C-x C-f") 'helm-find-files)
-;;(global-set-key (kbd "C-x b") 'helm-mini)
-
-;;emacs speed up on big files?
-;;(setq line-move-visual nil)
 (setq-default bidi-display-reordering nil)
-;;(set-default 'truncate-lines t)
 
 ;;suppressing ad-handle-definition Warnings
 (setq ad-redefinition-action 'accept)
 
-(add-hook 'js-mode-hook
-            (lambda ()
-              (push '("function" . 402) prettify-symbols-alist)))
-(add-hook 'fsharp-mode-hook
-          (lambda()
-            (push '("|>" . 8614) prettify-symbols-alist)))
-(global-prettify-symbols-mode 1)
-
-;;fsharp
-;;(add-hook 'fsharp-mode-hook
-;;          (lambda ()
-;;            (stupid-indent-mode)
-;;            (setq adaptive-fill-mode nil)
-;;            ))
-
 ;;disable C-x C-c
 (global-unset-key (kbd "C-x C-c"))
-
-(server-start)
