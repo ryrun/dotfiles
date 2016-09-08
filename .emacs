@@ -86,8 +86,9 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+(delete-selection-mode 1)
 
-(set-default-font "Source Code Pro-11")
+;;(set-default-font "Source Code Pro-11")
 
 (blink-cursor-mode 1)
 (set-cursor-color "#ffffff") 
