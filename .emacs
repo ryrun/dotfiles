@@ -107,3 +107,6 @@
 
 ;;disable C-x C-c
 (global-unset-key (kbd "C-x C-c"))
+
+;;disable backup files
+(setq auto-save-default nil)
