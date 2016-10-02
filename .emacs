@@ -15,6 +15,12 @@
 (use-package try
   :ensure t)
 
+(use-package rainbow-mode
+  :ensure t
+  :init
+    (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
+      (add-hook hook 'rainbow-mode)))
+
 (use-package which-key
   :ensure t 
   :config	(which-key-mode))
