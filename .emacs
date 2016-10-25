@@ -83,6 +83,15 @@
 (use-package theme-changer
   :init (load-theme 'manoj-dark t))
 
+(use-package anzu
+  :ensure t
+  :config
+  (progn
+    (global-anzu-mode t)
+    (diminish 'anzu-mode)
+    (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+    (global-set-key [remap query-replace] 'anzu-query-replace)))
+
 (set-frame-parameter (selected-frame) 'alpha '(98 98))
 (add-to-list 'default-frame-alist '(alpha 98 98))
 (setq ring-bell-function 'ignore)
@@ -95,7 +104,7 @@
 (set-keyboard-coding-system 'utf-8)
 (delete-selection-mode 1)
 
-;;(set-default-font "Source Code Pro-11")
+(set-default-font "Consolas-11")
 
 (blink-cursor-mode 1)
 (set-cursor-color "#ffffff") 
