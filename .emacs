@@ -54,12 +54,7 @@
             (setq ido-enable-flex-matching t)))
 
 (use-package fsharp-mode
-  :ensure t
-  :init (progn
-          (add-hook 'fsharp-mode-hook
-                    (lambda()
-                      (push '("|>" . 8614) prettify-symbols-alist)))
-          (global-prettify-symbols-mode 1)))
+  :ensure t)
 
 (use-package web-mode
   :ensure t
