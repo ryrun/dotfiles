@@ -87,6 +87,9 @@
     (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
     (global-set-key [remap query-replace] 'anzu-query-replace)))
 
+(use-package password-generator
+  :ensure t)
+
 (set-frame-parameter (selected-frame) 'alpha '(98 98))
 (add-to-list 'default-frame-alist '(alpha 98 98))
 (setq ring-bell-function 'ignore)
