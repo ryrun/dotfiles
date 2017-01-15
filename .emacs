@@ -18,8 +18,8 @@
 (use-package rainbow-mode
   :ensure t
   :init
-    (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
-      (add-hook hook 'rainbow-mode)))
+  (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
+    (add-hook hook 'rainbow-mode)))
 
 (use-package which-key
   :ensure t 
@@ -89,6 +89,11 @@
 
 (use-package password-generator
   :ensure t)
+
+(defun reformat-code ()
+  (interactive)
+  (save-excursion
+    (indent-region (point-min) (point-max) nil)))
 
 (set-frame-parameter (selected-frame) 'alpha '(98 98))
 (add-to-list 'default-frame-alist '(alpha 98 98))
