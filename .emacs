@@ -1,3 +1,4 @@
+
 (setq custom-file "~/.emacs.d/custom.el")
 (when (file-exists-p custom-file)
   (load custom-file))
@@ -36,6 +37,15 @@
 (use-package lua-mode
   :ensure t)
 
+(use-package php-mode
+  :ensure t
+  :init
+  (add-hook 'php-mode-hook '(lambda ()
+                              (setq tab-width 4
+                                    indent-tabs-mode t)
+                              (c-set-style "symfony2")
+                              )))
+
 (use-package stylus-mode
   :ensure t)
 
@@ -52,6 +62,15 @@
           (setq ido-everywhere t))
   :config (progn
             (setq ido-enable-flex-matching t)))
+
+(use-package flx-ido
+  :ensure t
+  :init (progn
+          (flx-ido-mode 1)
+          ;; disable ido faces to see flx highlights.
+          (setq ido-enable-flex-matching t)
+          (setq ido-use-faces nil)
+          ))
 
 (use-package fsharp-mode
   :ensure t)
@@ -88,6 +107,9 @@
     (global-set-key [remap query-replace] 'anzu-query-replace)))
 
 (use-package password-generator
+  :ensure t)
+
+(use-package julia-mode
   :ensure t)
 
 (defun reformat-code ()
