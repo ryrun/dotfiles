@@ -16,6 +16,10 @@
 (use-package try
   :ensure t)
 
+;;; simple fileio lib
+(use-package f                          
+  :ensure t)
+
 (use-package rainbow-mode
   :ensure t
   :init
