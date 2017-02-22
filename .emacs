@@ -1,4 +1,3 @@
-
 (setq custom-file "~/.emacs.d/custom.el")
 (when (file-exists-p custom-file)
   (load custom-file))
@@ -16,10 +15,6 @@
 (use-package try
   :ensure t)
 
-;;; simple fileio lib
-(use-package f                          
-  :ensure t)
-
 (use-package rainbow-mode
   :ensure t
   :init
@@ -28,7 +23,7 @@
 
 (use-package which-key
   :ensure t 
-  :config	(which-key-mode))
+  :config  (which-key-mode))
 
 (use-package helm
   :ensure t 
@@ -36,19 +31,15 @@
           (require 'helm-config)))
 
 (use-package company
-  :ensure t)
+  :defer t
+  :ensure t
+  :init (global-company-mode))
 
 (use-package lua-mode
   :ensure t)
 
 (use-package php-mode
-  :ensure t
-  :init
-  (add-hook 'php-mode-hook '(lambda ()
-                              (setq tab-width 4
-                                    indent-tabs-mode t)
-                              (c-set-style "symfony2")
-                              )))
+  :ensure t)
 
 (use-package stylus-mode
   :ensure t)
@@ -73,8 +64,8 @@
           (flx-ido-mode 1)
           ;; disable ido faces to see flx highlights.
           (setq ido-enable-flex-matching t)
-          (setq ido-use-faces nil)
-          ))
+          (setq ido-use-faces nil)))
+
 
 (use-package fsharp-mode
   :ensure t)
@@ -90,8 +81,8 @@
 (use-package magit
   :ensure t
   :bind (
-         ("C-x g" . magit-status)
-         ))
+         ("C-x g" . magit-status)))
+
 
 (use-package edit-server
   :if window-system
@@ -115,6 +106,16 @@
 
 (use-package julia-mode
   :ensure t)
+
+(use-package paredit
+  :init
+  (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+  (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+  (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+  (add-hook 'ielm-mode-hook 'enable-paredit-mode)
+  (add-hook 'json-mode-hook 'enable-paredit-mode))
 
 (defun reformat-code ()
   (interactive)
@@ -141,8 +142,10 @@
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
 
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+;;(setq-default indent-tabs-mode nil)     
+;;(setq-default tab-width 4)
+(setq tab-width 4
+      indent-tabs-mode t)
 
 (setq-default bidi-display-reordering nil)
 
