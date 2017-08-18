@@ -157,3 +157,6 @@
 
 ;;disable backup files
 (setq auto-save-default nil)
+
+;;disable frame suspend
+(put 'suspend-frame 'disabled t)
