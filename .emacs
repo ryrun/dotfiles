@@ -114,6 +114,15 @@
 (use-package julia-mode
   :ensure t)
 
+(use-package go-mode
+  :ensure t)
+
+(use-package go-eldoc
+  :ensure t
+  :defer
+  :init
+  (add-hook 'go-mode-hook 'go-eldoc-setup))
+
 (use-package paredit
   :init
   (add-hook 'clojure-mode-hook 'enable-paredit-mode)
