@@ -25,6 +25,13 @@
   :ensure t 
   :config  (which-key-mode))
 
+(use-package powershell
+  :ensure t)
+
+(use-package batch-mode
+  :ensure    batch-mode
+  :mode      ("\\.\\(bat\\)$" . batch-mode))
+
 (use-package helm
   :ensure t 
   :init (progn
@@ -157,6 +164,3 @@
 
 ;;disable backup files
 (setq auto-save-default nil)
-
-;;disable frame suspend
-(global-set-key [remap suspend-frame] 'ignore)
