@@ -4,8 +4,8 @@
 
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -42,6 +42,13 @@
   :ensure t
   :init (global-company-mode))
 
+(use-package company-go
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-go)))
+
 (use-package lua-mode
   :ensure t)
 
@@ -75,7 +82,10 @@
 
 
 (use-package fsharp-mode
-  :ensure t)
+  :ensure t
+  :init
+  (setq inferior-fsharp-program "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\FSharp\\Fsi.exe\"")
+  (setq fsharp-compiler "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\FSharp\\Fsc.exe\""))
 
 (use-package web-mode
   :ensure t
@@ -115,7 +125,14 @@
   :ensure t)
 
 (use-package go-mode
-  :ensure t)
+  :ensure t
+  :init
+  (progn
+    (setq gofmt-command "goimports")
+    (add-hook 'before-save-hook #'gofmt-before-save)
+    (bind-key [remap find-tag] #'godef-jump))
+  :config
+  (add-hook 'go-mode-hook 'electric-pair-mode))
 
 (use-package go-eldoc
   :ensure t
@@ -132,6 +149,13 @@
   (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
   (add-hook 'ielm-mode-hook 'enable-paredit-mode)
   (add-hook 'json-mode-hook 'enable-paredit-mode))
+
+(use-package auto-package-update
+   :ensure t
+   :config
+   (setq auto-package-update-delete-old-versions t
+         auto-package-update-interval 4)
+   (auto-package-update-maybe))
 
 (defun reformat-code ()
   (interactive)
